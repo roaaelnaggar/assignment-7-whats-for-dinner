@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What's For Dinner</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="./images/favicon.png" type="image/x-icon">
+</head>
+<body>
+
+<!-- navbar -->
+<nav class="navbar navbar-expand-lg sticky-top bg-white top-bar">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <div class="logo-circle">
+        <i class="fa-solid fa-utensils"></i>
+      </div>
+
+      <div class="brand-text">
+        <h1 class="brand-title">What's For Dinner</h1>
+        <p class="brand-sub">Your daily meal inspiration</p>
+      </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav-menu" aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="nav-menu">
+      <div class="nav-icons">
+        <a href="#" class="nav-icon">
+          <i class="fa-solid fa-bookmark"></i>
+          <span class="nav-label">Saved Recipes</span>
+        </a>
+        <a href="#" class="nav-icon">
+          <i class="fa-solid fa-clock-rotate-left"></i>
+          <span class="nav-label">Recent</span>
+        </a>
+        <a href="#" class="nav-icon">
+          <i class="fa-solid fa-gear"></i>
+          <span class="nav-label">Settings</span>
+        </a>
+        <a href="#" class="nav-icon">
+          <img src="images/avatar-1.jpg" class="avatar" alt="profile">
+          <span class="nav-label">Profile</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- main content -->
+<main class="container my-5">
+  <div class="card meal-card">
+    <div class="row g-0">
+
+      <!-- left side: image -->
+      <div class="col-md-5">
+        <div class="image-box">
+          <img id="meal-image" class="meal-image" src="" alt="meal">
+
+          <!-- rating -->
+          <div class="rating-box">
+            <i class="fa-solid fa-star"></i>
+            <span id="meal-rating" class="rating-number"></span>
+            <span id="meal-reviews" class="rating-reviews"></span>
+          </div>
+
+          <!-- prep, cook, servings -->
+          <div class="stats-box">
+            <div class="stat">
+              <i class="fa-solid fa-clock icon-orange"></i>
+              <p class="stat-label">Prep Time</p>
+              <p id="prep-time" class="stat-value"></p>
+            </div>
+
+            <div class="stat">
+              <i class="fa-solid fa-fire-burner icon-red"></i>
+              <p class="stat-label">Cook Time</p>
+              <p id="cook-time" class="stat-value"></p>
+            </div>
+
+            <div class="stat">
+              <i class="fa-solid fa-users icon-blue"></i>
+              <p class="stat-label">Servings</p>
+              <p id="servings" class="stat-value"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- right side: details -->
+      <div class="col-md-7 meal-info">
+
+        <div class="tags">
+          <span id="meal-difficulty" class="tag tag-level"></span>
+          <span id="meal-cuisine" class="tag tag-cuisine"></span>
+        </div>
+
+        <div class="title-row">
+          <h2 id="meal-name" class="meal-name"></h2>
+
+          <div class="action-buttons">
+            <button class="action-btn">
+              <i class="fa-solid fa-bookmark"></i>
+            </button>
+            <button class="action-btn">
+              <i class="fa-solid fa-share-nodes"></i>
+            </button>
+          </div>
+        </div>
+
+        <p id="meal-description" class="meal-description"></p>
+
+        <!-- warning -->
+        <div id="time-warning" class="time-warning hidden">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <div>
+            <p class="warning-title">Extended Preparation Time</p>
+            <p class="warning-text">This recipe requires more than 45 minutes to prepare. Plan accordingly!</p>
+          </div>
+        </div>
+
+        <!-- tabs buttons -->
+        <ul class="nav meal-tabs" role="tablist">
+          <li class="nav-item">
+            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#ingredients">
+              <i class="fa-solid fa-list-check"></i>Ingredients
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#instructions">
+              <i class="fa-solid fa-book-open"></i>Instructions
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nutrition">
+              <i class="fa-solid fa-chart-pie"></i>Nutrition
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tips">
+              <i class="fa-solid fa-lightbulb"></i>Chef's Tips
+            </button>
+          </li>
+        </ul>
+
+        <!-- tabs content -->
+        <div class="tab-content">
+
+          <div class="tab-pane fade show active" id="ingredients">
+            <div class="list-box">
+              <ul id="ingredients-list" class="numbered-list"></ul>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="instructions">
+            <div class="steps-box">
+              <ul id="instructions-list" class="steps-list"></ul>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="nutrition">
+            <div class="nutrition-grid">
+
+              <div class="nutrition-card">
+                <div class="nutrition-left">
+                  <div class="nutrition-icon box-orange">
+                    <i class="fa-solid fa-fire"></i>
+                  </div>
+                  <span>Calories</span>
+                </div>
+                <strong id="calories"></strong>
+              </div>
+
+              <div class="nutrition-card">
+                <div class="nutrition-left">
+                  <div class="nutrition-icon box-blue">
+                    <i class="fa-solid fa-dumbbell"></i>
+                  </div>
+                  <span>Protein</span>
+                </div>
+                <strong id="protein"></strong>
+              </div>
+
+              <div class="nutrition-card">
+                <div class="nutrition-left">
+                  <div class="nutrition-icon box-yellow">
+                    <i class="fa-solid fa-wheat-awn"></i>
+                  </div>
+                  <span>Carbohydrates</span>
+                </div>
+                <strong id="carbs"></strong>
+              </div>
+
+              <div class="nutrition-card">
+                <div class="nutrition-left">
+                  <div class="nutrition-icon box-red">
+                    <i class="fa-solid fa-droplet"></i>
+                  </div>
+                  <span>Fat</span>
+                </div>
+                <strong id="fat"></strong>
+              </div>
+
+              <div class="nutrition-card">
+                <div class="nutrition-left">
+                  <div class="nutrition-icon box-green">
+                    <i class="fa-solid fa-seedling"></i>
+                  </div>
+                  <span>Fiber</span>
+                </div>
+                <strong id="fiber"></strong>
+              </div>
+
+              <div class="nutrition-card">
+                <div class="nutrition-left">
+                  <div class="nutrition-icon box-pink">
+                    <i class="fa-solid fa-cube"></i>
+                  </div>
+                  <span>Sodium</span>
+                </div>
+                <strong id="sodium"></strong>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="tips">
+            <ul id="tips-list" class="tips-list"></ul>
+          </div>
+
+        </div>
+
+        <div class="line"></div>
+
+        <button id="try-another" class="try-button">
+          <i class="fa-solid fa-rotate"></i>Try Another Recipe
+        </button>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Bootstrap JS and custom JS files -->
+<script src="./js/bootstrap.bundle.min.js"></script>
+<script src="./js/meals.js"></script>
+<script src="./js/script.js"></script>
+</body>
+</html>
